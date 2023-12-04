@@ -1,0 +1,22 @@
+def eutos_score(basophil_percent, spleen_size):
+    try:
+        # Check if inputs are within the specified ranges
+        basophil_percent = max(min(basophil_percent, 25), 0)
+        spleen_size = max(min(spleen_size, 40), 0)
+        
+        # Calculate the final patient score
+        # The following line multiplies the basophil percentage by 7
+        # and spleen size by 4, then adds the two numbers together.
+        score = 7 * basophil_percent + 4 * spleen_size
+        
+        # Check if the score is greater than the threshold and return the result
+        # If the score is greater than 87, the patient is classified as 'High risk'.
+        # Otherwise, they are classified as 'Low risk'.
+        if score > 87:
+            return 'High risk', score
+        else:
+            return 'Low risk', score
+    
+    # Exception handling in case of incorrect input types
+    except TypeError:
+        return 'Invalid input'
